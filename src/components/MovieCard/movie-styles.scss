@@ -1,0 +1,14 @@
+.movie__card{
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 18%;
+  }
+
+  div {
+    ul {
+      margin: 0px;
+    }
+  }
+}
