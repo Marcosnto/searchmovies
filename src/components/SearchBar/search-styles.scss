@@ -1,7 +1,11 @@
 .search-bar{
   margin: 52px 0px 52px 0px;
+  display: flex; 
   .search__input {
+    width: 100%;
+    border: none;
     border-radius: 30px;
     padding: 15px 30px 15px 30px;
+    background: var(--gray-soft);
   }
 }
