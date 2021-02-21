@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import api from '../../api';
 
 import './description-styles.scss';
+
 
 const base_URL_img = 'https://image.tmdb.org/'
 
 export default function Index({ moviesData }) {
 
+  const [videoKey, setVideo] = useState();
+
+  useEffect(() => {
+    api.get('76341/videos?api_key=39f5cc0d37ae1fa0cb26c4fefc3801e6')
+    .then(response => {
+      setVideo(response.data.results[0].key);
+      console.log(response.data)
+    })
+    .catch(reject => {
+      console.log('ocorreu um erro ', reject);
+    });
+  }, [])
+  
   function getPorcentage(porcentage) {
     return Math.trunc(porcentage) + '%'
   }
@@ -68,6 +84,11 @@ export default function Index({ moviesData }) {
             </div>
         </li>
         </ul>
+      </div>
+      <div className="movie__video">
+        <iframe title="Trailer do filme" id="ytplayer" type="text/html"
+          src={`https://www.youtube.com/embed/${videoKey}?autoplay=0&origin=http://example.com`}
+        frameborder="0"/>
       </div>
     </div>
   )

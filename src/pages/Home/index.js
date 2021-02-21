@@ -22,13 +22,20 @@ export default function Index() {
     getData();
   }, [])
 
-  return (
-    <>
-      <Header />
-      <section className="movie-section">
-        <SearchBar />
-        <MovieCard moviesData={moviesData}/>
-      </section>
-    </>
-  )
+  if(!moviesData){
+    return <h1>Carregando...</h1>
+  }
+
+  if(moviesData){
+    return (
+      <>
+        <Header />
+        <section className="movie-section">
+          <SearchBar />
+          <MovieCard moviesData={moviesData}/>
+        </section>
+      </>
+    )
+  }
+
 }
