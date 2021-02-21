@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import SearchBar from '../../components/SearchBar'
 import MovieCard from '../../components/MovieCard'
+import Header from '../../components/Header'
 
 import api from '../../api';
 
@@ -23,9 +24,7 @@ export default function Index() {
 
   return (
     <>
-      <header className="App-header">
-        <h1>Movies</h1>
-      </header>
+      <Header />
       <section className="movie-section">
         <SearchBar />
         <MovieCard moviesData={moviesData}/>

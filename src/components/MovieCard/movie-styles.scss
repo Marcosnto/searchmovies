@@ -2,6 +2,10 @@
   display: flex;
   justify-content: center;
 
+  a {
+    text-decoration: none;
+  }
+
   img {
     width: 13%;
   }
@@ -78,11 +82,10 @@
     }
 
     .movie_details--score_date{
-      .date{
-        color: var(--gray-hard); 
-        font-size: 1.4em;
-        margin-left: 5%;
-      }
+      margin-top: 5px;
+      color: var(--gray-hard); 
+      font-size: 1.4em;
+      margin-left: 5%;
     }
   }
 }
