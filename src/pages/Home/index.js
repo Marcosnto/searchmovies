@@ -60,6 +60,9 @@ export default function Index() {
             return null;
           }) : <h1>Pesquise um filme gatinho</h1>
           }
+          {searchMovie && moviesData.length === 0 && (
+            <h1>Nenhum resultado encontrado :(</h1>
+          )}
         </section>
     </>
     )
