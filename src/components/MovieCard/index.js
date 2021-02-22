@@ -9,6 +9,7 @@ const base_URL_img = 'https://image.tmdb.org/'
 export default function Index({ moviesData, genres }) {
   console.log(moviesData);
   const [posterImg, setPosterImg] = useState(NotFoundImage);
+  const [overview, setOverview] = useState('Não há descrição para este filme.');
 
   function getPorcentage(porcentage) {
     return Math.trunc(porcentage) + '%'
@@ -22,6 +23,10 @@ export default function Index({ moviesData, genres }) {
   useEffect(() => {
     if(moviesData.poster_path){
       setPosterImg(`${base_URL_img}t/p/w500/${moviesData.poster_path}`);
+    }
+
+    if(moviesData.overview){
+      setOverview(moviesData.overview);
     }
   }, [moviesData]);
 
@@ -40,7 +45,7 @@ export default function Index({ moviesData, genres }) {
             {moviesData?.release_date}
           </li>
           <li className="movie_details-description" key={`description+${moviesData.id}`}>
-            <p className="movie_description-text">{moviesData?.overview}</p>
+            <p className="movie_description-text">{overview}</p>
             <div className="movie_details-tags">
               {moviesData?.genre_ids?.map((id) => {
               return <span>{getGenresNames(id)}</span>
