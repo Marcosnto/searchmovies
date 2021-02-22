@@ -88,7 +88,7 @@ export default function Index({ moviesData }) {
       <div className="movie__video">
         <iframe title="Trailer do filme" id="ytplayer" type="text/html"
           src={`https://www.youtube.com/embed/${videoKey}?autoplay=0&origin=http://example.com`}
-        frameborder="0"/>
+        frameBorder="0"/>
       </div>
     </div>
   )

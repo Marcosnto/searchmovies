@@ -1,6 +1,7 @@
 .movie__card{
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 
   a {
     text-decoration: none;
@@ -14,7 +15,8 @@
     background: var(--gray-medium);
     display: flex;
     flex-direction: column;
-
+    width: 100%;
+    
     .movie_details-title{
       display: flex;
       align-items: flex-end;
