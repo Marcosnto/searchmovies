@@ -6,8 +6,7 @@ import MovieDetails from '../../components/MovieDetails'
 
 import './details-styles.scss';
 
-import api from '../../api';
-const key = '39f5cc0d37ae1fa0cb26c4fefc3801e6';
+import { api, key } from '../../api';
 
 export default function Index() {
 

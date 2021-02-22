@@ -1,3 +1,35 @@
 .movie-section {
   margin: 0px 58px 0px 58px;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  align-items: center;
+  margin-bottom: 30px;
+  
+  li {
+    button{
+      font-family: 'Lato';
+      font-size: 1.4em;
+      background: none;
+      border: none;
+      color: var(--blue-background);
+    }
+    margin-right: 15px;
+
+    .selected-btn-page{
+      width: 50px;
+      height: 50px;
+      background: var(--blue-background);
+      color: var(--blue-title);
+      border: solid 3px var(--blue-title);
+      border-radius: 30px;
+    }
+  }
+}
+
+.movie-section__search{
+  text-align: center;
+}

@@ -3,25 +3,53 @@ import SearchBar from '../../components/SearchBar'
 import MovieCard from '../../components/MovieCard'
 import Header from '../../components/Header'
 
-import api from '../../api';
+import { api, key } from '../../api';
 import './home-styles.scss'
-
-const key = '39f5cc0d37ae1fa0cb26c4fefc3801e6';
 
 export default function Index() {
   const [genres, setGenres] = useState();
   const [moviesData, setMoviesData] = useState();
-  const [currectPage, setCurrectPage] = useState(1);
   const [searchMovie, setSearchMovie] = useState();
+  const [currectPage, setCurrectPage] = useState(1);
+  
+  const [selectedPage, setSelectedPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
+  const [dataPages, setDataPages] = useState([]);
+
+  const moviesForPage = 5;
+
+  function paginationData(fullData){
+    let currectPosition = 5;
+    let beforeValue = 0;
+    let arrayTeste = [];
+
+    setTotalPages(Math.ceil(fullData.length / moviesForPage));
+
+    if(fullData){
+      for (let pagePosition = 0; pagePosition < totalPages; pagePosition++) {
+        let array2 = [];
+        for (let index = beforeValue; index < currectPosition; index++) {
+          if(fullData[index]){
+            array2[index] = fullData[index];
+          }
+        }
+        arrayTeste[pagePosition] = array2;
+        beforeValue = currectPosition;
+        currectPosition += 5;
+      }
+      setDataPages(arrayTeste);
+      setMoviesData(dataPages[selectedPage]);
+    }
+  }
 
   async function getData() {
     await api.get(`/search/movie?api_key=${key}&language=pt-BR&page=${currectPage}&query=${searchMovie}`)
-    .then((response) => {
-      setMoviesData(response.data.results);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+      .then((response) => {
+        paginationData(response.data.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   async function getGenres() {
@@ -35,16 +63,35 @@ export default function Index() {
   }
 
   useEffect(() => {
-    getData();
     getGenres();
   }, [])
 
   useEffect(() => {
+    setSelectedPage(0);
     getData();
-  }, [searchMovie])
+  }, [searchMovie]);
 
-  if(!moviesData){
-    return <h1>Carregando...</h1>
+  useEffect(() => {
+    if(dataPages){
+      setMoviesData(dataPages[selectedPage]);
+    }
+  }, [selectedPage]);
+
+  function setNewPage(e){
+    setSelectedPage(+e)
+  }
+
+  const pages = [];
+  for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+    pages.push(
+      <li key={pageNumber}>
+        <button 
+          className={(pageNumber === selectedPage) && 'selected-btn-page'} 
+          onClick={() => setNewPage(pageNumber)}>
+            {pageNumber}
+        </button>
+      </li>
+    );
   }
 
   return (
@@ -52,16 +99,22 @@ export default function Index() {
       <Header />
         <section className="movie-section">
           <SearchBar onChange={setSearchMovie} value={searchMovie}/>
-          {
-          searchMovie ? moviesData?.map((movieData, index) => {
-            if(true) {
+          {searchMovie ? moviesData?.map((movieData) => {
+            if(movieData) {
               return <MovieCard moviesData={movieData} genres={genres}/>
             }
             return null;
-          }) : <h1>Pesquise um filme gatinho</h1>
+          }) : <div className="movie-section__search">
+                  <h1>Pesquise um filme!</h1>
+               </div>
           }
-          {searchMovie && moviesData.length === 0 && (
-            <h1>Nenhum resultado encontrado :(</h1>
+          {searchMovie && (
+            <ul className="pagination">{pages}</ul>
+          )}
+          {searchMovie && moviesData?.length === 0 && (
+            <div className="movie-section__search">
+              <h1>Nenhum resultado encontrado :(</h1>
+            </div>
           )}
         </section>
     </>
