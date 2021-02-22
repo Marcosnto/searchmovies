@@ -8,7 +8,7 @@ export default function routes() {
   return (
     <Switch className="App">
       <Route path="/" exact component={Home} />
-      <Route path="/movie-detail" component={MovieDetails}/>
+      <Route path="/movie-detail/:id" component={MovieDetails}/>
     </Switch>
   )
 }

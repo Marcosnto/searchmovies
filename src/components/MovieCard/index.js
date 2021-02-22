@@ -7,7 +7,6 @@ import './movie-styles.scss';
 const base_URL_img = 'https://image.tmdb.org/'
 
 export default function Index({ moviesData, genres }) {
-  console.log(moviesData);
   const [posterImg, setPosterImg] = useState(NotFoundImage);
   const [overview, setOverview] = useState('Não há descrição para este filme.');
 
@@ -34,7 +33,7 @@ export default function Index({ moviesData, genres }) {
     <div className="movie__card" min-width="300px">
       <img src={posterImg} alt="teste"/>
       <div className="movie_details">
-        <Link to="/movie-detail">
+        <Link to={`/movie-detail/${moviesData.id}`}>
           <div className="movie_details-title">
           <span className="score"><span>{getPorcentage(moviesData?.popularity)}</span></span>
           <h2>{moviesData?.title}</h2>
