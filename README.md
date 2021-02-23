@@ -24,5 +24,5 @@ yarn start ou npm start
 localhost:3000
 ```
 
-5. Utilize o app a vontade e divirta-se! 🐱‍🏍
+5. Utilize o app a vontade e divirta-se! 👾
 
