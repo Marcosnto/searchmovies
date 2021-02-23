@@ -1,4 +1,4 @@
-## Search Movies 
+## Search Movies 🎬
 
 O Search Movie é um web app responsivo desenvolvido em ReactJS que consiste em procurar filmes a partir de nome ou gênero utilizando a API da [The Movies DB](https://www.themoviedb.org/). 
 
@@ -24,5 +24,5 @@ yarn start ou npm start
 https://localhost:3000
 ```
 
-5. Utilize o app a vontade e divirta-se! 😎
+5. Utilize o app a vontade e divirta-se! 🐱‍🏍
 
