@@ -41,7 +41,7 @@ export default function Index({ moviesData, genres }) {
         </Link>
         <ul className="movie_details-card" key={`cardList+${moviesData.id}`}>
           <li className="movie_details--score_date date" key={`date+${moviesData.id}`}>
-            {moviesData?.release_date}
+            {moviesData?.release_date.split('-').reverse().join('/')}
           </li>
           <li className="movie_details-description" key={`description+${moviesData.id}`}>
             <p className="movie_description-text">{overview}</p>

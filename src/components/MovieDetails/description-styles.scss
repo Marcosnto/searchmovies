@@ -1,5 +1,4 @@
 .movie__details{
-
   h1, h2, h6 { 
     color: var(--blue-hard-title) ;
     font-weight: 500;
@@ -39,7 +38,7 @@
     .movie__details-text {
       display: flex;
       flex-direction: column;
-
+      width: 100%;
       hr {
         height: 2px;
         border-width: 0;
@@ -80,6 +79,7 @@
         justify-content: space-between;
         .movie_details-tags{
           display: flex;
+          flex-flow: wrap;
           li{ 
             background-color: white;
             margin-right: 20px;
@@ -123,3 +123,94 @@
     }
   }
 }
+
+@media (max-width: 1920px){
+  .movie__details 
+  .movie__details-description 
+  .movie__details-text 
+  .movie_details-rate 
+  .movie_details-percentage {
+    width: 100px;
+    height: 100px;
+    top: 7px;
+    margin-bottom: 20px;
+    .score {
+        font-size: 1.2em;
+    }
+  }
+}
+
+@media (max-width: 1200px){
+  .movie__details 
+  .movie__details-description {
+    img {
+      width: 27%;
+    }
+    .movie__details-text {
+      .description__info {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      .movie_details-rate {
+        .movie_details-percentage {
+          width: 80px;
+          height: 80px;
+          top: 7px;
+          margin-bottom: 20px;
+          margin-top: 20px;
+          .score {
+            span {
+              font-size: 1.2em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px){
+  .movie__details 
+  .movie__details-description {
+    img {
+      width: 40%;
+    }
+    .description__info .description__info-data {
+      flex-wrap: wrap;
+      padding: 10px;
+    }
+  }
+}
+
+@media (max-width: 768px){
+  .movie__details {
+    .description__title {
+      font-size: 1em;
+    }
+    .movie__details-description {
+      img {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px){
+  .movie__details {
+    .description__title {
+      h1 {
+        margin-left: 10px;
+      }
+    }
+    .movie__details-description {
+      .movie__details-text{
+        padding: 0px;
+        .description__sinopse {
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
+
+

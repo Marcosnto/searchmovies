@@ -31,7 +31,7 @@ export default function Index() {
       }else {
         api.get(`/movie/${params.id}/videos?api_key=${key}`)
         .then(response => {
-          setVideo(response.data.results[0].key);
+          setVideo(response.data.results[0]?.key);
         })
       }
     })
