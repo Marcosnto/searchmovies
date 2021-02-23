@@ -21,7 +21,7 @@ yarn start ou npm start
 
 4. Após o passo 3, o projeto já pode ser iniciado na porta padrão 3000 (ou caso esta esteja sendo utilizada, verificar qual foi disponibilizada pelo React).
 ```
-https://localhost:3000
+localhost:3000
 ```
 
 5. Utilize o app a vontade e divirta-se! 🐱‍🏍
