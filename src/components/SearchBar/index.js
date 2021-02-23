@@ -16,7 +16,7 @@ export default function index({onChange, value}) {
         valeu={value}
         onChange={setWord}
         id="search" 
-        placeholder="Busque um filme por nome, ano ou gênero"
+        placeholder="Busque um filme por nome ou gênero"
       />
     </div>
   )

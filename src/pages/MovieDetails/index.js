@@ -4,9 +4,10 @@ import { useRouteMatch } from 'react-router-dom';
 import Header from '../../components/Header';
 import MovieDetails from '../../components/MovieDetails'
 
+import { api, key } from '../../api';
+
 import './details-styles.scss';
 
-import { api, key } from '../../api';
 
 export default function Index() {
 
@@ -36,27 +37,23 @@ export default function Index() {
       }
     })
     .catch(reject => {
-      console.log('ocorreu um erro ', reject);
+      console.log('Ocorreu um erro ', reject);
     });
   }
 
   useEffect(() => {
     getData();
   }, [])
-  
-  if(!movieData){
-    return (
-      <h1>Carregando...</h1>
-    )
-  }
 
-  if(movieData){
-    return (
+  return (
       <div>
-          <Header />
+        <Header />
+        {movieData ? 
           <MovieDetails movieData={movieData} videoKey={videoKey}/>
-      </div>
-    )
-  }
-
+        : <div className="movie-section__status">
+              <h1>Carregando...</h1>
+          </div>
+         }
+    </div>
+  )
 }

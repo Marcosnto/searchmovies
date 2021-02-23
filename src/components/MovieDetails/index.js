@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import NotFoundImage from '../../assets/img_not_found.png'
+
 import './description-styles.scss';
 
 const base_URL_img = 'https://image.tmdb.org/'

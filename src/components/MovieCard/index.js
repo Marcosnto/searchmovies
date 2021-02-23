@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import NotFoundImage from '../../assets/img_not_found.png'
+
 import './movie-styles.scss';
 
 const base_URL_img = 'https://image.tmdb.org/'

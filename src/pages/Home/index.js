@@ -1,9 +1,11 @@
 import React, { useState, useEffect} from 'react'
+
 import SearchBar from '../../components/SearchBar'
 import MovieCard from '../../components/MovieCard'
 import Header from '../../components/Header'
 
 import { api, key } from '../../api';
+
 import './home-styles.scss'
 
 export default function Index() {
@@ -21,23 +23,23 @@ export default function Index() {
   function paginationData(fullData){
     let currectPosition = 5;
     let beforeValue = 0;
-    let arrayTeste = [];
+    let finalDataMovies = [];
 
     setTotalPages(Math.ceil(fullData.length / moviesForPage));
 
     if(fullData){
       for (let pagePosition = 0; pagePosition < totalPages; pagePosition++) {
-        let array2 = [];
+        let temporayArray = [];
         for (let index = beforeValue; index < currectPosition; index++) {
           if(fullData[index]){
-            array2[index] = fullData[index];
+            temporayArray[index] = fullData[index];
           }
         }
-        arrayTeste[pagePosition] = array2;
+        finalDataMovies[pagePosition] = temporayArray;
         beforeValue = currectPosition;
         currectPosition += 5;
       }
-      setDataPages(arrayTeste);
+      setDataPages(finalDataMovies);
       setMoviesData(dataPages[selectedPage]);
     }
   }
@@ -104,7 +106,7 @@ export default function Index() {
               return <MovieCard moviesData={movieData} genres={genres}/>
             }
             return null;
-          }) : <div className="movie-section__search">
+          }) : <div className="movie-section__status">
                   <h1>Pesquise um filme!</h1>
                </div>
           }
@@ -112,7 +114,7 @@ export default function Index() {
             <ul className="pagination">{pages}</ul>
           )}
           {searchMovie && moviesData?.length === 0 && (
-            <div className="movie-section__search">
+            <div className="movie-section__status">
               <h1>Nenhum resultado encontrado :(</h1>
             </div>
           )}
