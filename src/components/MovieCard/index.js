@@ -30,7 +30,7 @@ export default function Index({ moviesData, genres }) {
   }, [moviesData]);
 
   return (
-    <div className="movie__card" min-width="300px">
+    <div className="movie__card">
       <img src={posterImg} alt="teste"/>
       <div className="movie_details">
         <Link to={`/movie-detail/${moviesData.id}`}>
